@@ -1,0 +1,67 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        meta(http-equiv='x-ua-compatible' content='ie=edge')
+        block title
+            title #{title}
+        //if lt IE 9
+            script var elementsArray = ['abbr', 'article', 'aside', 'audio', 'bdi', 'canvas', 'data', 'datalist', 'details', 'figcaption', 'figure', 'footer', 'header', 'main', 'mark', 'meter', 'nav', 'output', 'progress', 'section', 'summary', 'template', 'time', 'video']; var len = elementsArray.length; for(i = 0; i < len; i++){document.createElement(elementsArray[i]);}
+        //I had to use an absolute link on the link element so it would work on all page levels.
+
+        link(rel="stylesheet" href="../css/main.css")
+
+        script(type="text/javascript" src="/js/tinymce/tinymce.min.js")
+        script.
+            tinymce.init({
+                selector: "#mytextarea",
+                menubar: "false",
+                toolbar: "styleselect | bold | italic | alignleft | aligncenter | alignright | alignjustify | bullist | numlist | outdent | indent | link | code",
+                plugins: "link , code",
+                min_height: 400
+            });
+
+    body
+        div#wrapper
+            header
+                block header
+                    h1 CMS Application
+                    div.serviceTimesForm
+                        form(id='timeForm' method='post' action="/timeRoute")
+                            label First Service:
+                                input(type='text' size='15' value='#{first}' id='firstTime' name='firstTime')
+                            label Second Service:
+                                input(type='text' size='15' value='#{second}' id='secondTime' name='secondTime')
+                            input(type='submit' value='Save Times' id='saveServiceTimes')
+                            div#logout
+                                a(href='/logout') Logout
+
+
+
+            nav
+                ul
+                    li
+                        a(href="/admin/home") Home
+                    li
+                        a(href="/admin/sermon") Sermon
+                    li
+                        a(href="/admin/ministry") Ministry
+                    li
+                        a(href="/admin/community") Community
+                    li
+                        a(href="/admin/events") Events
+                    li
+                        a(href="/admin/aboutus") About Us
+
+            main
+                block content
+                    div(id='editableArea') !{content}
+
+            footer
+                div#leftFoot
+                    p Church
+                    p 1234 Somewhere Road
+                    p Anyplace, MI 12345
+                div#rightFoot
+                    p 999-999-9999 (phone)
+                    p 999-999-9999 (fax)

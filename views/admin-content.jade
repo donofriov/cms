@@ -1,0 +1,13 @@
+extends ./admin-template.jade
+
+block content
+    div#adminContent
+        form(id="textForm" method="post" action="/ajax2" enctype="multipart/form-data" role="form")
+            textarea(id="mytextarea" name="mytextarea") !{content}
+            input(type="submit" id="saveButton" value="Save Content")
+        div#saving.hide
+        div#saved.hide
+    script(src="../js/main.js")
+    script(src="../js/ajax.js")
+
+

@@ -1,0 +1,24 @@
+extends ./admin-template.jade
+
+block content
+    div#sermonContent
+        form(id="uploadFile" enctype="multipart/form-data" action="/ajax5" method="post" role="form")
+            label Sermon Title:
+                input(type="text" size="25" id="fileName")
+            br
+            input(type="file" id="file" name="file")
+            br
+            input(type="submit" id="submitBtn" value="Add Sermon")
+        div#saving.hide
+        div#saved.hide
+    div#response
+        table#sermonTable
+            thead
+                th Name
+                th Date
+                th Delete
+            tbody#tableBody
+
+                |!{table}
+    script(src="../js/main.js")
+    script(src="../js/ajax.js")

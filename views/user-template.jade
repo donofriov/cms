@@ -1,0 +1,54 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='x-ua-compatible' content='ie=edge')
+		block title
+			title #{title}
+		//if lt IE 9
+			script var elementsArray = ['abbr', 'article', 'aside', 'audio', 'bdi', 'canvas', 'data', 'datalist', 'details', 'figcaption', 'figure', 'footer', 'header', 'main', 'mark', 'meter', 'nav', 'output', 'progress', 'section', 'summary', 'template', 'time', 'video']; var len = elementsArray.length; for(i = 0; i < len; i++){document.createElement(elementsArray[i]);}
+		//I had to use an absolute link on the link element so it would work on all page levels.
+		link(rel="stylesheet" href="css/main.css")
+		
+	body
+		div#wrapper
+			header
+				block header
+					h1 CMS Application
+
+					div(id="times")
+						p First Service:  #{first}
+						p Second Service:  #{second}
+	
+			nav
+				ul
+					li
+						a(href="/") Home
+					li
+						a(href="/sermon") Sermon
+					li
+						a(href="/ministry") Ministry
+					li
+						a(href="/community") Community
+					li
+						a(href="/events") Events
+					li
+						a(href="/aboutus") About Us
+														
+			main
+				block content
+					div(id='editableArea') !{content}
+					
+			footer
+				div#leftFoot
+					p Church
+					p 1234 Somewhere Road
+					p Anyplace, MI 12345
+				div#rightFoot
+					p 999-999-9999 (phone)
+					p 999-999-9999 (fax)
+
+		
+
+
+			
